@@ -1,0 +1,21 @@
+from django.conf.urls import url
+
+from . import views
+
+app_name = 'mmda'
+urlpatterns = [
+    # ex: /polls/
+   url(r'^$', views.IndexView, name='index'),
+    # ex: /polls/5/
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+    # ex: /polls/5/results/
+    url(r'^(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='results'),
+    # ex: /polls/5/vote/
+    url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    #
+    url(r'^index.html/$', views.IndexView, name='index_view'),
+    url(r'^add_file.html/$', views.AddFileView.as_view(), name='add_file_view'),
+    url(r'^add_webpage.html/$', views.AddPageView.as_view(), name='add_page_view'),
+    url(r'^keywords.html/$', views.AddKeywordsView.as_view(), name='add_keywords_view'),
+    url(r'^query.html/$', views.QueryView.as_view(), name='query_view'),
+]
